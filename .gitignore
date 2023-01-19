@@ -1,0 +1,4 @@
+src/var
+src/vendor
+docker/db
+src/xdebug.log

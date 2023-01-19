@@ -1,0 +1,40 @@
+version: '3.7'
+
+services:
+  php:
+    build: ./docker/builds/phpfpm
+    links:
+      - database
+    restart: always
+    volumes:
+      - ./src/:/var/www/html
+    networks:
+      - internal
+
+  nginx:
+    build: ./docker/builds/nginx
+    links:
+      - php
+    restart: always
+    ports:
+      - 1234:80
+    volumes:
+      - ./src/:/var/www/html
+    networks:
+      - internal
+
+  database:
+    build: ./docker/builds/mariadb
+    restart: always
+    volumes:
+      - ./docker/db/:/var/lib/mysql/
+    environment:
+      MYSQL_ROOT_PASSWORD: saturn
+      MYSQL_DATABASE: saturn
+      MYSQL_USER: saturn
+      MYSQL_PASSWORD: saturn
+    networks:
+      - internal
+
+networks:
+  internal:
