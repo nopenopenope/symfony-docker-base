@@ -1,4 +1,5 @@
 FROM php:8.1-fpm
+LABEL org.opencontainers.image.authors="max@schimmelmann.org"
 
 ENV PHP_IDE_CONFIG="serverName=symfony-base"
 ENV BASE_DIR /var/www
@@ -48,6 +49,8 @@ RUN apt-get purge -y \
 
 ADD ./etc/php.ini /usr/local/etc/php/php.ini
 ADD ./etc/php-cli.ini /usr/local/etc/php/php-cli.ini
+ADD ./etc/quickstart.sh /usr/local/bin/quickstart
+RUN chmod +x /usr/local/bin/quickstart
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 

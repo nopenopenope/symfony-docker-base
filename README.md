@@ -27,3 +27,19 @@ suggested in the first place).
 
 Instead, manipulate the `.env` file locally to match your environment, or better, create a `.env.local` file to override
 the settings in there for local development.
+
+
+### Technologies packed within
+
+| Software | Version |
+|----------|---------|
+| PHP FPM  | 8.1     |
+| Nginx    | 1.23.3  |
+| Symfony  | ^6.2    |
+| XDebug   | 3.2.0   |
+| MariaDb  | 10.10.2 |
+
+
+### Author
+
+This package has been assembled by Maximilian Graf Schimmelmann (https://www.schimmelmann.org). 
